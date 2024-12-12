@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Facts App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a1a2e;
+            color: white;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .fact-box {
+            background-color: #16213e;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+            line-height: 1.5;
+        }
+
+        button {
+            background-color: #4a47a3;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #6c63ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Amazing Space Facts</h1>
+        <div id="fact-display" class="fact-box">
+            Click the button to see a space fact!
+        </div>
+        <button id="new-fact-btn">Show New Fact</button>
+    </div>
+
+    <script>
+        const spaceFacts = {
+            "spaceFacts": [
+                // Copy your JSON data here
+            ]
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const factDisplay = document.getElementById('fact-display');
+            const newFactBtn = document.getElementById('new-fact-btn');
+
+            function getRandomFact() {
+                const facts = spaceFacts.spaceFacts;
+                const randomIndex = Math.floor(Math.random() * facts.length);
+                return facts[randomIndex].fact;
+            }
+
+            newFactBtn.addEventListener('click', () => {
+                factDisplay.textContent = getRandomFact();
+                factDisplay.style.opacity = 0;
+                setTimeout(() => {
+                    factDisplay.style.opacity = 1;
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>
